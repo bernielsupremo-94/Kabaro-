@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "KABARO - Your Digital Onboard Companion",
+  "short_name": "KABARO",
+  "description": "Your Personal Digital Onboard Companion",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061b35",
+  "theme_color": "#061b35",
+  "icons": [
+    {
+      "src": "assets/kabaro-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/kabaro-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

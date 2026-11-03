@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <meta name="theme-color" content="#061b35">
+    <meta name="description" content="KABARO - Your Personal Digital Companion Onboard">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KABARO">
+
+    <title>KABARO | Your Personal Digital Companion Onboard</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+
+    <link rel="stylesheet" href="style.css?v=20261103">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ==================================
+         1. SPLASH SCREEN
+    =================================== -->
+
+    <section id="splashScreen" class="screen splash-screen">
+
+        <div class="splash-content">
+
+            <div class="splash-logo">⚓</div>
+
+            <h1>KABARO<span>®</span></h1>
+
+            <p>Your Personal Digital Companion Onboard</p>
+
+            <div class="loading-track">
+                <div class="loading-progress"></div>
+            </div>
+
+            <small>SAILING WITH YOU, EVERY STEP OF THE WAY</small>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================
+         2. SETUP / PROFILE
+    =================================== -->
+
+    <section id="setupScreen" class="screen setup-screen">
+
+        <header class="setup-header">
+            <h1>KABARO<span>®</span></h1>
+            <p>Your Personal Digital Companion Onboard</p>
+        </header>
+
+        <div class="setup-progress">
+            <div class="progress-step active">1 <small>Profile</small></div>
+            <div class="progress-line"></div>
+            <div class="progress-step">2 <small>Vessel</small></div>
+            <div class="progress-line"></div>
+            <div class="progress-step">3 <small>Preferences</small></div>
+        </div>
+
+        <form id="setupForm">
+
+            <div class="form-heading">
+                <span>👤</span>
+                <h2>Personal Information</h2>
+            </div>
+
+            <div class="form-group">
+                <label for="setupName">Full Name</label>
+                <input id="setupName" type="text" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="setupRank">Rank</label>
+                <select id="setupRank" required>
+                    <option value="">Select rank</option>
+                    <option>Master</option>
+                    <option>Chief Officer</option>
+                    <option>Second Officer</option>
+                    <option>Third Officer</option>
+                    <option>Deck Cadet</option>
+                    <option>Chief Engineer</option>
+                    <option>Second Engineer</option>
+                    <option>Third Engineer</option>
+                    <option>Fourth Engineer</option>
+                    <option>Engine Cadet</option>
+                    <option>Electrical Officer</option>
+                    <option>Bosun</option>
+                    <option>Able Seafarer Deck</option>
+                    <option>Ordinary Seafarer</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="setupDepartment">Department</label>
+                <select id="setupDepartment">
+                    <option value="Deck">Deck</option>
+                    <option value="Engine">Engine</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-heading">
+                <span>🚢</span>
+                <h2>Vessel Information</h2>
+            </div>
+
+            <div class="form-group">
+                <label for="setupVessel">Vessel Name</label>
+                <input id="setupVessel" type="text" placeholder="Enter vessel name">
+            </div>
+
+            <div class="form-group">
+                <label for="setupVesselType">Vessel Type</label>
+                <select id="setupVesselType">
+                    <option value="">Select vessel type</option>
+                    <option>Bulk Carrier</option>
+                    <option>Container Ship</option>
+                    <option>Tanker</option>
+                    <option>General Cargo</option>
+                    <option>Passenger Ship</option>
+                    <option>Offshore Vessel</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="setupCompany">Company (Optional)</label>
+                <input id="setupCompany" type="text" placeholder="Enter company name">
+            </div>
+
+            <div class="form-group">
+                <label for="setupJoiningDate">Joining Date (Optional)</label>
+                <input id="setupJoiningDate" type="date">
+            </div>
+
+            <button type="submit" class="primary-button">
+                Continue to KABARO
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- ==================================
+         MAIN APPLICATION
+    =================================== -->
+
+    <div id="mainApp" class="main-app hidden">
+
+        <!-- TOP HEADER -->
+
+        <header class="top-header">
+
+            <button class="header-menu" id="menuButton" aria-label="Menu">
+                ☰
+            </button>
+
+            <div class="header-brand">
+                <h1>KABARO<span>®</span></h1>
+                <small>Your Personal Digital Companion Onboard</small>
+            </div>
+
+            <button class="notification-button" id="notificationButton" aria-label="Notifications">
+                ♧
+                <span class="notification-dot"></span>
+            </button>
+
+        </header>
+
+        <!-- MAIN PAGE CONTENT -->
+
+        <main id="mainContent">
+
+
+            <!-- ==================================
+                 3. HOME DASHBOARD
+            =================================== -->
+
+            
+<section id="homeScreen" class="page active">
+
+    <!-- WELCOME -->
+    <div class="home-welcome">
+        <p class="muted-label">WELCOME ABOARD</p>
+        <h2 id="homeGreeting">Good day, KABARO!</h2>
+        <p id="homeDate"></p>
+    </div>
+
+    <!-- JOB OVERVIEW -->
+    <div class="dashboard-section">
+
+        <div class="dashboard-section-title">
+            <span>📋</span>
+            <h3>JOB OVERVIEW</h3>
+        </div>
+
+        <div class="dashboard-stats">
+
+            <div class="stat-card stat-today">
+                <div class="stat-icon">📋</div>
+                <div class="stat-info">
+                    <span class="stat-label">Jobs Today</span>
+                    <strong id="todayCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card stat-pending">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-info">
+                    <span class="stat-label">Jobs Pending</span>
+                    <strong id="pendingCount">0</strong>
+                </div>
+            </div>
+
+            <div class="stat-card stat-upcoming">
+                <div class="stat-icon">📅</div>
+                <div class="stat-info">
+                    <span class="stat-label">Upcoming Jobs</span>
+                    <strong id="upcomingCount">0</strong>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SEA SERVICE AND VACATION -->
+    <div class="dashboard-section">
+
+        <div class="dashboard-section-title">
+            <span>🚢</span>
+            <h3>SEA SERVICE &amp; VACATION</h3>
+        </div>
+
+        <div class="service-stats">
+
+            <div class="service-card onboard-card">
+                <div class="service-icon">🚢</div>
+                <div class="service-info">
+                    <strong id="daysOnboardCount">—</strong>
+                    <span>Days Onboard</span>
+                    <small id="onboardStatus">SET JOINING DATE</small>
+                </div>
+            </div>
+
+            <div class="service-card vacation-card">
+                <div class="service-icon">🌴</div>
+                <div class="service-info">
+                    <strong id="daysVacationCount">—</strong>
+                    <span>Days on Vacation</span>
+                    <small id="vacationStatus">SET DISEMBARKATION DATE</small>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="service-edit-button" id="editServiceDates">
+            ⚙ Update Sea Service Dates
+        </button>
+
+    </div>
+
+    <!-- QUICK ACCESS -->
+    <div class="dashboard-section">
+
+        <div class="quick-access-grid">
+
+            <button class="quick-access-button quick-jobs"
+                    data-go="routineScreen">
+                <span class="quick-icon">☑</span>
+                <span class="quick-label">MY JOBS</span>
+                <span class="quick-arrow">›</span>
+            </button>
+
+            <button class="quick-access-button quick-operations"
+                    data-go="operationsScreen">
+                <span class="quick-icon">⚓</span>
+                <span class="quick-label">OPERATIONS</span>
+                <span class="quick-arrow">›</span>
+            </button>
+
+            <button class="quick-access-button quick-safety"
+                    data-go="safetyScreen">
+                <span class="quick-icon">🛡</span>
+                <span class="quick-label">SAFETY</span>
+                <span class="quick-arrow">›</span>
+            </button>
+
+            <button class="quick-access-button quick-records"
+                    data-go="personalScreen">
+                <span class="quick-icon">📁</span>
+                <span class="quick-label">PERSONAL RECORDS</span>
+                <span class="quick-arrow">›</span>
+            </button>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+            <!-- ==================================
+                 4. MODULES MENU
+            =================================== -->
+
+            <section id="modulesScreen" class="page">
+
+                <div class="page-title">
+                    <h2>Select a Category</h2>
+                    <p>Explore your onboard modules.</p>
+                </div>
+
+                <div class="module-card" data-go="routineScreen">
+                    <span class="module-icon blue">▦</span>
+                    <div>
+                        <h3>Routine Jobs</h3>
+                        <p>Daily, Weekly, Monthly, Quarterly, Yearly Jobs</p>
+                    </div>
+                    <span>›</span>
+                </div>
+
+                <div class="module-card" data-go="operationsScreen">
+                    <span class="module-icon yellow">🚢</span>
+                    <div>
+                        <h3>Operations</h3>
+                        <p>Special Job Order, Port Arrival, Port Departure</p>
+                    </div>
+                    <span>›</span>
+                </div>
+
+                <div class="module-card" data-go="safetyScreen">
+                    <span class="module-icon red">🛡</span>
+                    <div>
+                        <h3>Safety & Emergency</h3>
+                        <p>Emergency Drill Duties</p>
+                    </div>
+                    <span>›</span>
+                </div>
+
+                <div class="module-card" data-go="personalScreen">
+                    <span class="module-icon teal">▤</span>
+                    <div>
+                        <h3>Personal & Records</h3>
+                        <p>Assorted Reminders, Matters for Turn Over, Pre-boarding Checklist, Contract and Sea Service</p>
+                    </div>
+                    <span>›</span>
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 5. ROUTINE JOBS
+            =================================== -->
+
+            <section id="routineScreen" class="page">
+
+<div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>My Jobs</h2>
+        <p>Select a category to manage your onboard tasks.</p>
+    </div>
+
+    <button type="button"
+            class="page-back-button"
+            onclick="goBack()">
+        ← BACK
+    </button>
+
+</div>
+
+    <div class="routine-category-grid">
+
+        <button class="routine-category daily-category"
+                data-period="Daily" data-go="dailyJobsScreen">
+            <span class="routine-category-icon">☀</span>
+            <span class="routine-category-title">DAILY JOBS</span>
+            <span class="routine-category-description">Tasks to be done every day</span>
+            <span class="routine-category-arrow">›</span>
+        </button>
+
+        <button class="routine-category weekly-category"
+                data-period="Weekly" data-go="routineJobsScreen">
+            <span class="routine-category-icon">▦</span>
+            <span class="routine-category-title">WEEKLY JOBS</span>
+            <span class="routine-category-description">Tasks to be done every week</span>
+            <span class="routine-category-arrow">›</span>
+        </button>
+
+        <button class="routine-category monthly-category"
+                data-period="Monthly" data-go="routineJobsScreen">
+            <span class="routine-category-icon">▣</span>
+            <span class="routine-category-title">MONTHLY JOBS</span>
+            <span class="routine-category-description">Tasks to be done every month</span>
+            <span class="routine-category-arrow">›</span>
+        </button>
+
+        <button class="routine-category quarterly-category"
+                data-period="Quarterly" data-go="routineJobsScreen">
+            <span class="routine-category-icon">▥</span>
+            <span class="routine-category-title">QUARTERLY JOBS</span>
+            <span class="routine-category-description">Tasks to be done every quarter</span>
+            <span class="routine-category-arrow">›</span>
+        </button>
+
+        <button class="routine-category yearly-category"
+                data-period="Yearly" data-go="routineJobsScreen">
+            <span class="routine-category-icon">★</span>
+            <span class="routine-category-title">YEARLY JOBS</span>
+            <span class="routine-category-description">Tasks to be done every year</span>
+            <span class="routine-category-arrow">›</span>
+        </button>
+
+    </div>
+
+    <button class="reset-all-jobs-button" id="resetAllJobsButton">
+        ↻ RESET ALL JOBS
+        <small>Reset completed jobs in all five categories</small>
+    </button>
+
+</section>
+
+
+            <!-- ==================================
+                 6. OPERATIONS
+            =================================== -->
+
+            <section id="operationsScreen" class="page">
+
+<div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>Operations</h2>
+        <p>Operational checklists and activities.</p>
+    </div>
+
+    <button type="button"
+            class="page-back-button"
+            onclick="goBack()">
+        ← BACK
+    </button>
+
+</div>
+
+                <div class="category-list">
+
+                    <button data-go="specialJobsScreen">📋 Special Job Order <span>›</span></button>
+                    <button data-go="portArrivalScreen">⚓ Port Arrival <span>›</span></button>
+                    <button data-go="portDepartureScreen">🚢 Port Departure <span>›</span></button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 7. SAFETY & EMERGENCY
+            =================================== -->
+
+            <section id="safetyScreen" class="page">
+
+<div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>Safety & Emergency</h2>
+        <p>Safety duties and emergency preparedness.</p>
+    </div>
+
+    <button type="button"
+            class="page-back-button"
+            onclick="goBack()">
+        ← BACK
+    </button>
+
+</div>
+
+                <div class="category-list">
+
+                    <button data-go="emergencyScreen">🛡 Emergency Drill Duties <span>›</span></button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 8. PERSONAL & RECORDS
+            =================================== -->
+
+            <section id="personalScreen" class="page">
+                <div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>Personal Records</h2>
+        <p>Manage your personal information and onboard records.</p>
+    </div>
+
+    <button type="button"
+            class="page-back-button"
+            onclick="goBack()">
+        ← BACK
+    </button>
+
+</div>
+
+                <div class="category-list">
+
+                    <button data-go="remindersScreen">🔔 Assorted Reminders <span>›</span></button>
+                    <button data-go="turnoverScreen">📋 Matters for Turn Over <span>›</span></button>
+                    <button type="button" data-go="preboardingScreen">
+    Personal Pre-Boarding Checklist
+</button>
+                    <button data-go="contractScreen">📄 Contract and Sea Service <span>›</span></button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================
+                 9. DAILY JOBS
+            =================================== -->
+
+            <section id="dailyJobsScreen" class="page">
+
+<div class="page-title page-title-with-back">
+    <div class="page-title-text">
+        <h2>Daily Jobs</h2>
+        <p>Manage your daily onboard responsibilities.</p>
+    </div>
+
+<button type="button" id="backButton" class="page-back-button" onclick="goBack()">
+    ← BACK
+</button>
+</div>
+
+                <div class="filter-tabs">
+                    <button class="active" data-filter="All">All</button>
+                    <button data-filter="Pending">Pending</button>
+                    <button data-filter="Completed">Completed</button>
+                </div>
+
+                <div class="search-row">
+                    <input id="jobSearch" type="search" placeholder="Search daily job...">
+                    <button id="jobFilterButton">☷</button>
+                </div>
+<div class="job-management-buttons">
+    <button id="addJobButton" class="add-job-action">＋ ADD JOB</button>
+    <button id="resetDailyJobsButton" class="reset-job-action">↻ RESET DAILY JOBS</button>
+</div>
+
+                <div id="dailyJobsContainer" class="job-list"></div>
+
+            </section>
+
+
+            <!-- ==================================
+                 10. PORT ARRIVAL
+            =================================== -->
+
+            <section id="portArrivalScreen" class="page">
+
+<div class="page-title page-title-with-back">
+    <div class="page-title-text">
+        <h2>Port Arrival</h2>
+        <p>Arrival preparation and checklist.</p>
+    </div>
+
+    <button type="button" class="page-back-button" onclick="goBack()">
+        ← BACK
+    </button>
+</div>
+
+                <div class="filter-tabs">
+                    <button class="active" data-filter="Checklist">Checklist</button>
+                    <button data-filter="Details">Details</button>
+                </div>
+
+                <div class="search-row">
+                    <input type="search" id="arrivalSearch" placeholder="Search checklist...">
+                </div>
+
+                <div id="arrivalContainer" class="job-list"></div>
+
+                <button class="floating-add" id="addArrivalButton">+</button>
+
+            </section>
+
+
+            <!-- PORT DEPARTURE -->
+
+            <section id="portDepartureScreen" class="page">
+
+<div class="page-title page-title-with-back">
+    <div class="page-title-text">
+        <h2>Port Departure</h2>
+        <p>Departure preparation and checklist.</p>
+    </div>
+
+    <button type="button" class="page-back-button" onclick="goBack()">
+        ← BACK
+    </button>
+</div>
+
+                <div id="departureContainer" class="job-list"></div>
+
+                <button class="floating-add" id="addDepartureButton">+</button>
+
+            </section>
+
+
+            <!-- SPECIAL JOB ORDER -->
+
+            <section id="specialJobsScreen" class="page">
+
+<div class="page-title page-title-with-back">
+    <div class="page-title-text">
+        <h2>Special Job Order</h2>
+        <p>Special instructions and assigned tasks.</p>
+    </div>
+
+    <button type="button" class="page-back-button" onclick="goBack()">
+        ← BACK
+    </button>
+</div>
+
+                <div id="specialJobsContainer" class="job-list"></div>
+
+                <button class="floating-add" id="addSpecialJobButton">+</button>
+
+            </section>
+
+
+            <!-- ==================================
+                 11. MATTERS FOR TURN OVER
+            =================================== -->
+
+<section id="turnoverScreen" class="page">
+
+    <div class="page-title page-title-with-back">
+        <div class="page-title-text">
+            <h2>Matters for Turn Over</h2>
+            <p>Items and information to be handed over.</p>
+        </div>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+    </div>
+
+                <div class="filter-tabs">
+                    <button class="active" data-filter="Open">Open</button>
+                    <button data-filter="Completed">Completed</button>
+                </div>
+
+                <div class="search-row">
+                    <input id="turnoverSearch" type="search" placeholder="Search turnover item...">
+                </div>
+
+                <div id="turnoverContainer" class="job-list"></div>
+
+                <button class="floating-add" id="addTurnoverButton">+</button>
+
+            </section>
+
+
+            <!-- ==================================
+                 12. CONTRACT AND SEA SERVICE
+            =================================== -->
+
+<section id="contractScreen" class="page">
+
+<div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>Contract and Sea Service</h2>
+        <p>Maintain your employment and sea service records.</p>
+    </div>
+
+    <div class="contract-header-actions">
+
+        <button type="button"
+                id="generateSeaServicePDFButton"
+                class="contract-pdf-button">
+            📄 PDF REPORT
+        </button>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+
+    </div>
+
+</div>
+
+    <div id="contractContainer" class="record-list"></div>
+
+    <button class="floating-add" id="addContractButton">+</button>
+
+</section>
+
+
+            <!-- OTHER PERSONAL MODULES -->
+
+<section id="remindersScreen" class="page">
+
+    <div class="page-title page-title-with-back">
+
+        <div class="page-title-text">
+            <h2>Assorted Reminders</h2>
+            <p>Important reminders and upcoming activities.</p>
+        </div>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+
+    </div>
+                <div id="remindersContainer" class="job-list"></div>
+                <button class="floating-add" id="addReminderButton">+</button>
+            </section>
+
+<section id="preboardingScreen" class="page">
+
+    <div class="page-title page-title-with-back">
+        <div class="page-title-text">
+            <h2>Personal Pre-Boarding Checklist</h2>
+            <p>Prepare for your next embarkation.</p>
+        </div>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+    </div>
+
+    <div class="preboarding-controls">
+        <button type="button" class="preboarding-filter active"
+                onclick="setPreboardingFilter('all', this)">ALL</button>
+
+        <button type="button" class="preboarding-filter"
+                onclick="setPreboardingFilter('pending', this)">PENDING</button>
+
+        <button type="button" class="preboarding-filter"
+                onclick="setPreboardingFilter('completed', this)">COMPLETED</button>
+    </div>
+
+    <button type="button"
+            class="preboarding-reset"
+            onclick="resetCompletedJobs('preboarding')">
+        ↻ RESET COMPLETED TASKS
+    </button>
+
+    <div id="preboardingContainer" class="job-list"></div>
+
+    <button class="floating-add" id="addPreboardingButton">+</button>
+
+</section>
+
+            <section id="emergencyScreen" class="page">
+<div class="page-title page-title-with-back">
+
+    <div class="page-title-text">
+        <h2>Emergency Drill Duties</h2>
+        <p>Emergency preparedness and assigned responsibilities.</p>
+    </div>
+
+    <button type="button"
+            class="page-back-button"
+            onclick="goBack()">
+        ← BACK
+    </button>
+
+</div>
+                <div id="emergencyContainer" class="job-list"></div>
+                <button class="floating-add" id="addEmergencyButton">+</button>
+            </section>
+
+           <section id="routineJobsScreen" class="page">
+
+<div class="page-title page-title-with-back">
+    <div class="page-title-text">
+        <h2 id="routinePeriodTitle">Routine Jobs</h2>
+        <p>Manage your recurring job schedule.</p>
+    </div>
+
+<button type="button" class="page-back-button" onclick="goBack()">
+    ← BACK
+</button>
+</div>
+
+    <div id="routineJobsContainer" class="job-list"></div>
+
+    <div class="job-management-buttons">
+        <button id="addRoutineButton" class="add-job-action">＋ ADD JOB</button>
+        <button id="resetRoutineJobsButton" class="reset-job-action">↻ RESET JOBS</button>
+    </div>
+
+</section>
+
+
+            <!-- ==================================
+                 13. REPORTS & HISTORY
+            =================================== -->
+
+            <section id="reportsScreen" class="page">
+
+                <div class="page-title">
+                    <h2>Reports & History</h2>
+                    <p>Review your completed jobs and activities.</p>
+                </div>
+
+                <div class="category-list">
+
+                    <button data-go="completedHistoryScreen">✓ Completed Jobs History <span>›</span></button>
+                    <button data-go="monthlySummaryScreen">▥ Monthly Summary <span>›</span></button>
+                    <button data-go="dateReportScreen">▦ Custom Date Range Report <span>›</span></button>
+
+                </div>
+
+                <button class="report-button" id="exportPDFButton">📄 Export to PDF</button>
+
+                <button class="report-button" id="printReportButton">🖨 Print Report</button>
+
+            </section>
+
+
+            <section id="completedHistoryScreen" class="page">
+                <div class="page-title">
+                    <h2>Completed Jobs History</h2>
+                    <p>Records of completed onboard tasks.</p>
+                </div>
+                <div id="completedHistoryContainer" class="job-list"></div>
+            </section>
+
+            <section id="monthlySummaryScreen" class="page">
+                <div class="page-title">
+                    <h2>Monthly Summary</h2>
+                    <p>Overview of your monthly activities.</p>
+                </div>
+                <div id="monthlySummaryContainer"></div>
+            </section>
+
+            <section id="dateReportScreen" class="page">
+                <div class="page-title">
+                    <h2>Custom Date Range Report</h2>
+                </div>
+                <div class="form-group">
+                    <label for="reportStartDate">Start Date</label>
+                    <input type="date" id="reportStartDate">
+                </div>
+                <div class="form-group">
+                    <label for="reportEndDate">End Date</label>
+                    <input type="date" id="reportEndDate">
+                </div>
+                <button class="primary-button" id="generateReportButton">Generate Report</button>
+                <div id="customReportContainer"></div>
+            </section>
+
+
+            <!-- ==================================
+                 14. SETTINGS
+            =================================== -->
+
+            <section id="settingsScreen" class="page">
+
+                <div class="page-title">
+                    <h2>Settings</h2>
+                    <p>Customize your KABARO application.</p>
+                </div>
+
+                <div class="settings-list">
+
+                    <button data-go="profileSettingsScreen">👤 My Profile <span>›</span></button>
+                    <button data-go="themeSettingsScreen">🎨 Theme Appearance <span>›</span></button>
+                    <button data-go="aboutScreen">ℹ About KABARO <span>›</span></button>
+
+                </div>
+
+            </section>
+
+
+<section id="profileSettingsScreen" class="page">
+
+    <div class="page-title page-title-with-back">
+
+        <div class="page-title-text">
+            <h2>My Profile</h2>
+            <p>Manage your personal information.</p>
+        </div>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+
+    </div>
+
+    <div id="profileSettingsContainer"></div>
+
+</section>
+
+            <section id="vesselSettingsScreen" class="page">
+                <div class="page-title"><h2>Vessel Information</h2></div>
+                <div id="vesselSettingsContainer"></div>
+            </section>
+
+            <section id="jobSettingsScreen" class="page">
+                <div class="page-title"><h2>Job List Management</h2></div>
+                <div id="jobSettingsContainer"></div>
+            </section>
+
+            <section id="reminderSettingsScreen" class="page">
+                <div class="page-title"><h2>Reminders & Notifications</h2></div>
+                <div id="reminderSettingsContainer"></div>
+            </section>
+
+            <section id="dateSettingsScreen" class="page">
+                <div class="page-title"><h2>Date and Time Format</h2></div>
+                <div id="dateSettingsContainer"></div>
+            </section>
+
+            <section id="backupSettingsScreen" class="page">
+                <div class="page-title"><h2>Backup and Restore</h2></div>
+                <div id="backupSettingsContainer"></div>
+            </section>
+
+<section id="themeSettingsScreen" class="page">
+
+    <div class="page-title page-title-with-back">
+        <div class="page-title-text">
+            <h2>Theme Appearance</h2>
+            <p>Personalize the appearance of your KABARO app.</p>
+        </div>
+
+        <button type="button"
+                class="page-back-button"
+                onclick="goBack()">
+            ← BACK
+        </button>
+    </div>
+
+    <div id="themeSettingsContainer"></div>
+
+</section>
+
+<section id="aboutScreen" class="page">
+    <div class="page-title" style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    ">
+        <h2>About KABARO</h2>
+
+        <button class="back-button" onclick="goBack()">
+            BACK
+        </button>
+    </div>
+
+    <div class="info-card" style="
+        background: #102a43 !important;
+        color: #ffffff !important;
+        text-align: center;
+        padding: 35px 20px;
+        border: 1px solid #d4af37;
+        border-radius: 16px;
+        box-shadow: 0 5px 18px rgba(0,0,0,0.35);
+    ">
+
+        <h2 style="
+            color: #f5d76e !important;
+            font-size: 30px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        ">
+            KABARO<sup>®</sup>
+        </h2>
+
+        <p style="
+            color: #ffffff !important;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        ">
+            Your Personal Digital Companion Onboard.
+        </p>
+
+        <p style="
+            color: #f5d76e !important;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        ">
+            VERSION 1.0
+        </p>
+
+        <div style="
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 20px;
+        ">
+            <p style="
+                color: #ffffff !important;
+                font-size: 13px;
+                margin-bottom: 8px;
+            ">
+                DEVELOPED BY
+            </p>
+
+            <p style="
+                color: #f5d76e !important;
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: 0;
+            ">
+                2OFF BERNIEL S. MARIMON
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+            <!-- ==================================
+                 15. SEARCH
+            =================================== -->
+
+            <section id="searchScreen" class="page">
+
+                <div class="page-title">
+                    <h2>Search</h2>
+                    <p>Find jobs, notes, documents and records.</p>
+                </div>
+
+                <div class="search-row">
+                    <input id="globalSearch" type="search" placeholder="Search everything...">
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="active" data-search-type="All">All</button>
+                    <button data-search-type="Jobs">Jobs</button>
+                    <button data-search-type="Notes">Notes</button>
+                    <button data-search-type="Documents">Documents</button>
+                </div>
+
+                <div id="searchResults" class="job-list"></div>
+
+            </section>
+
+
+        </main>
+
+
+        <!-- ==================================
+             BOTTOM NAVIGATION
+        =================================== -->
+
+        <nav class="bottom-navigation">
+
+            <button class="nav-button active" data-go="homeScreen">
+                <span>⌂</span>
+                <small>Home</small>
+            </button>
+
+            <button class="nav-button" data-go="searchScreen">
+                <span>⌕</span>
+                <small>Search</small>
+            </button>
+
+            <button class="nav-add-button" id="globalAddButton">
+                +
+            </button>
+
+            <button class="nav-button" data-go="reportsScreen">
+                <span>▤</span>
+                <small>Reports</small>
+            </button>
+
+            <button class="nav-button" data-go="settingsScreen">
+                <span>⚙</span>
+                <small>Settings</small>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+    <!-- ==================================
+         GLOBAL MODAL
+    =================================== -->
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Item</h3>
+                <button id="closeModalButton">×</button>
+            </div>
+
+            <div id="modalContent"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- APPLICATION SCRIPT -->
+
+    <script src="script.js?v=20261103"></script>
+
+
+    <!-- SERVICE WORKER REGISTRATION -->
+
+<script>
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener("load", () => {
+
+            navigator.serviceWorker.register("./service-worker.js", {
+                updateViaCache: "none"
+            })
+            .then(registration => {
+                console.log("KABARO offline support enabled.");
+
+                // Check for the latest service worker
+                registration.update();
+            })
+            .catch(error => {
+                console.error("Service worker registration failed:", error);
+            });
+
+        });
+
+    }
+</script>
+
+</div>
+
+</body>
+</html>
